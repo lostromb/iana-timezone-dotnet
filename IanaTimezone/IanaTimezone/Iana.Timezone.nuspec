@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+		<!-- Required elements-->
+		<id>Iana.Timezone</id>
+		<version>1.0.0</version>
+		<description>Library for calculating local time, daylight savings, future time zone changes, and current DST / GMT offsets for any IANA time zone and any geographic location on Earth.</description>
+		<authors>Logan Stromberg</authors>
+		<title>IANA Timezone Calculator</title>
+		<owners>lostromb</owners>
+		<projectUrl>https://github.com/lostromb/iana-timezone-dotnet</projectUrl>
+		<dependencies>
+			<group targetFramework="netstandard11">
+				<dependency id="NETStandard.Library" version="1.6.0" />
+			</group>
+		</dependencies>
+    </metadata>
+    <files>
+		<file src=".\bin\Release\Iana.Timezone.dll" target="lib\netstandard1.3" />
+		<file src=".\bin\Release\Iana.Timezone.pdb" target="lib\netstandard1.3" />
+		<file src=".\bin\Release\Iana.Timezone.xml" target="lib\netstandard1.3" />
+		<file src=".\Data\*" target="content" />
+	</files>
+</package>

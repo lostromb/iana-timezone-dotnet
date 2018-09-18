@@ -58,7 +58,6 @@ namespace Iana.Timezone
         /// <summary>
         /// Constructs a new time zone resolver
         /// </summary>
-        /// <param name="logger"></param>
         public TimeZoneResolver()
         {
             _zoneLinks = new Dictionary<string, string>();
@@ -71,7 +70,6 @@ namespace Iana.Timezone
         /// Initializes the time zone resolver and TZ point database.
         /// This is an asynchronous method because of file access but it also performs a lot of parsing and geo calculation to prepare the data
         /// </summary>
-        /// <param name="fileSystem">A local filesystem to load data files from</param>
         /// <param name="ianaFileDirectory">The path to a folder containing AT MINIMUM: zone1970.tab and iana time zone definition files (usually named as continents without file extension).
         /// Additionally, loads TimeZoneGlobalPoints.tsv if available to provide time zone geographic mapping</param>
         /// <returns></returns>
@@ -263,7 +261,6 @@ namespace Iana.Timezone
         /// <param name="timeZoneName">The IANA name of the timezone to query, for example Europe/Madrid</param>
         /// <param name="rangeBegin">The beginning of the query range</param>
         /// <param name="rangeEnd">The ending of the query range</param>
-        /// <param name="queryLogger">A logger</param>
         /// <returns>An ordered set of time zone rule spans which describe DST / GMT rules and the boundaries of when those rules take effect</returns>
         public List<TimeZoneRuleEffectiveSpan> CalculateTimeZoneRuleSpans(string timeZoneName, DateTimeOffset rangeBegin, DateTimeOffset rangeEnd)
         {
@@ -295,7 +292,6 @@ namespace Iana.Timezone
         /// </summary>
         /// <param name="coordinate">The coordinate to query</param>
         /// <param name="utcTime">The current UTC time</param>
-        /// <param name="queryLogger">A logger</param>
         /// <returns>Time zone query results, or null if an internal error occurred</returns>
         public TimeZoneQueryResult CalculateLocalTime(GeoCoordinate coordinate, DateTimeOffset utcTime)
         {
@@ -323,7 +319,6 @@ namespace Iana.Timezone
         /// </summary>
         /// <param name="zoneName">The IANA name of the time zone, for example Africa/Cairo</param>
         /// <param name="utcTime">The current UTC time</param>
-        /// <param name="queryLogger">A logger</param>
         /// <returns>Time zone query results, or null if an internal error occurred</returns>
         public TimeZoneQueryResult CalculateLocalTime(string zoneName, DateTimeOffset utcTime)
         {
@@ -379,7 +374,6 @@ namespace Iana.Timezone
         /// <param name="zoneName"></param>
         /// <param name="rangeBegin"></param>
         /// <param name="rangeEnd"></param>
-        /// <param name="queryLogger"></param>
         /// <returns></returns>
         private List<TimeZoneRuleSetRegion> CalculateTimeZoneRegions(string zoneName, DateTimeOffset rangeBegin, DateTimeOffset rangeEnd)
         {
@@ -423,7 +417,6 @@ namespace Iana.Timezone
         /// <param name="zone">Information about the current timezone</param>
         /// <param name="rangeBegin">The beginning of the range you are interested in</param>
         /// <param name="rangeEnd">The end of the range you are interested in</param>
-        /// <param name="queryLogger">A logger</param>
         /// <returns>A list of daylight savings time rules and the spans for which they take efffect</returns>
         private List<TimeZoneRuleEffectiveSpan> GenerateTimeZoneRuleRegionsForSingleZone(IanaTimeZoneEntry zone, DateTimeOffset rangeBegin, DateTimeOffset rangeEnd)
         {
